@@ -25,9 +25,4 @@ public class PersonController {
         return personRepository.findByCityOfLiving(city);
     }
 
-    // Метод для получения людей старше 27 лет, отсортированных по возрасту
-    @GetMapping("/persons/older-than-27")
-    public List<Person> getPersonsOlderThan27() {
-        return personRepository.findByAgeGreaterThanOrderByAgeDesc(27);
-    }
 }

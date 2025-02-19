@@ -11,6 +11,4 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, PersonKey> {
 
     List<Person> findByCityOfLiving(String city);
-
-    List<Person> findByAgeGreaterThanOrderByAgeDesc(int age);
 }
