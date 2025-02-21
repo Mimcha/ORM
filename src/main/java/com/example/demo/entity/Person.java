@@ -16,7 +16,7 @@ public class Person {
     private String phoneNumber;
 
     @Column(name = "city_of_living", nullable = false)
-    private String cityOfLiving;
+    private String city;
 
     // Геттер для доступа к возрасту через PersonKey
     public int getAge() {
@@ -41,10 +41,10 @@ public class Person {
     }
 
     public String getCityOfLiving() {
-        return cityOfLiving;
+        return city;
     }
 
     public void setCityOfLiving(String cityOfLiving) {
-        this.cityOfLiving = cityOfLiving;
+        this.city = cityOfLiving;
     }
 }
