@@ -1,22 +1,22 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Person;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
 
 @Repository
-public class PersonRepository {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
+    // Метод для поиска по городу
+    List<Person> findByCityOfLiving(String city);
 
-    public List<Person> findAllByCity(String city) {
-        String hql = "FROM Person p WHERE p.city = :city";
-        TypedQuery<Person> query = entityManager.createQuery(hql, Person.class);
-        query.setParameter("city", city);
-        return query.getResultList();
-    }
+    // Метод для поиска по возрасту
+    List<Person> findByAgeLessThanOrderByAgeAsc(int age);
+
+    // Метод для поиска по имени и фамилии
+    Optional<Person> findByNameAndSurname(String name, String surname);
 }
